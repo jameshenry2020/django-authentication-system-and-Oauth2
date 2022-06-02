@@ -1,4 +1,4 @@
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1mkg^_35&g27ku)$!fqcr-&!3!+ow%&h$dcd08$fwfp_ugy&49'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -105,15 +105,15 @@ DATABASES = {
 
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-#         'NAME': ‘<db_name>’,
+#         'NAME': ‘myauth-db’,
 
-#         'USER': '<db_username>',
+#         'USER': 'postgres',
 
-#         'PASSWORD': '<password>',
+#         'PASSWORD': 'james4321',
 
-#         'HOST': '<db_hostname_or_ip>',
+#         'HOST': 'myauth-db.cbomofit86h3.us-east-1.rds.amazonaws.com',
 
-#         'PORT': '<db_port>',
+#         'PORT': 5432,
 
 #     }
 
@@ -197,16 +197,15 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-FACEBOOK_APP_ID=''
-FACEBOOK_SECRET=''
+
 
 
 
 
 #Email configuration
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST=''
-EMAIL_HOST_USER=''
-EMAIL_HOST_PASSWORD=''
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER=os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS=''
 EMAIL_PORT=''
